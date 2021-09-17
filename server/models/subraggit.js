@@ -6,7 +6,7 @@ export const SubraggitSchema = new Schema({
   title: { type: String, required: true, minlength: 1, maxlength: 25 },
   creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', required: true },
   img: { type: String },
-  description: { type: String, required: true }
+  description: { type: String, maxlength: 500, required: true }
 }, { timestamps: true, id: true, toJSON: { virtuals: true } })
 
 SubraggitSchema.virtual('creator', {
