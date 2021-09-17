@@ -10,6 +10,12 @@ class SubraggitsService {
     ProxyState.subraggits = [...ProxyState.subraggits, new Subraggit(res.data)]
     logger.log(ProxyState.subraggits)
   }
+
+  async deleteSubraggit(subraggitId) {
+    const res = await api.delete('api/subraggits' + subraggitId)
+    ProxyState.subraggits = ProxyState.subraggits.filter(s => s.id !== subraggitId)
+    logger.log(res)
+  }
 }
 
 export const subraggitsService = new SubraggitsService()

@@ -33,4 +33,12 @@ export class SubraggitsController {
       logger.log(error)
     }
   }
+
+  async deleteSubraggit(subraggitId) {
+    try {
+      await subraggitsService.deleteSubraggit(subraggitId)
+    } catch (error) {
+      logger.log(error, 'from deleteSubraggit from controller')
+    }
+  }
 }
