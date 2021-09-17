@@ -10,7 +10,19 @@ export class Subraggit {
 
   get Template() {
     return /* html */`
-    
+        <div class="col-md-6 my-3 Subraggit">
+      <div class="card">
+        <img src="${this.img}" alt="Subraggit-image" class="rounded">
+        <div class="card-body">
+          <h5 class="d-flex justify-content-between">
+            <span >${this.title}</span>
+          </h5>
+          <p>${this.description}</p>
+        </div>
+      </div>
+    </div>
     `
   }
 }
+
+// <button class="btn btn-danger" onclick="app.commentsController.addComment('${this.id}')">Delete</button>
