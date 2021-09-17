@@ -3,9 +3,9 @@ import { logger } from '../Utils/Logger.js'
 import { subraggitsService } from '../Services/SubraggitService.js'
 
 export class SubraggitsController {
-  constructor() {
+  // constructor() {
 
-  }
+  // }
 
   async createSubraggit() {
     // eslint-disable-next-line no-undef
