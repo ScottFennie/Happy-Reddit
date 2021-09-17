@@ -1,6 +1,6 @@
 import { ProxyState } from '../AppState.js'
 import { logger } from '../Utils/Logger.js'
-import { subraggitsService } from ''
+import { subraggitsService } from '../Services/SubraggitService.js'
 
 export class SubraggitsController {
   constructor() {
