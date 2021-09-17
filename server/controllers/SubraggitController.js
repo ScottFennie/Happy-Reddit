@@ -1,0 +1,22 @@
+import { Auth0Provider } from '@bcwdev/auth0provider'
+import { subraggitService } from '../services/SubraggitService'
+import BaseController from '../utils/BaseController'
+
+export class SubraggitController extends BaseController {
+  constructor() {
+    super('api/subraggits')
+    this.router
+      .get('', this.getSubraggits)
+      .use(Auth0Provider.getAuthorizedUserInfo)
+    // .post('', this.createSubraggits)
+  }
+
+  async getSubraggits(req, res, next) {
+    try {
+      const subraggits = await subraggitService.getSubraggits(req.query)
+      return res.send(subraggits)
+    } catch (error) {
+      next(error)
+    }
+  }
+}
