@@ -1,4 +1,5 @@
 import { dbContext } from '../db/DbContext'
+import { logger } from '../utils/Logger'
 
 class SubraggitService {
   async getSubraggits(query) {
@@ -8,6 +9,8 @@ class SubraggitService {
 
   async createSubraggit(subraggitData) {
     const subraggit = await dbContext.Subraggits.create(subraggitData)
+    // await subraggit.populate()
+    // logger.log(subraggit.populate())
     return subraggit
   }
 }
