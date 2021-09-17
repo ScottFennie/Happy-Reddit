@@ -7,6 +7,7 @@ export class SubraggitController extends BaseController {
     super('api/subraggits')
     this.router
       .get('', this.getSubraggits)
+      .get('/:id', this.getSubraggitById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createSubraggits)
   }
@@ -24,6 +25,15 @@ export class SubraggitController extends BaseController {
     try {
       const subraggit = await subraggitService.createSubraggit(req.body)
       res.send(subraggit)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getSubraggitById(req, res, next) {
+    try {
+      const subraggit = await subraggitService.getSubraggitById(req.params.id)
+      return subraggit
     } catch (error) {
       next(error)
     }
