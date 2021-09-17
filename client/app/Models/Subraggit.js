@@ -18,6 +18,7 @@ export class Subraggit {
             <span >${this.title}</span>
           </h5>
           <p>${this.description}</p>
+          <button class="btn btn-danger" onclick="app.subraggitsController.deleteSubraggit('${this.subraggitId}')">Delete</button>
         </div>
       </div>
     </div>
