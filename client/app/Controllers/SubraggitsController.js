@@ -2,10 +2,17 @@ import { ProxyState } from '../AppState.js'
 import { logger } from '../Utils/Logger.js'
 import { subraggitsService } from '../Services/SubraggitService.js'
 
-export class SubraggitsController {
-  // constructor() {
+function _drawSubraggit() {
+  let template = ''
+  ProxyState.subraggits.forEach(s => { template += s.Template })
+  document.getElementById('subraggit').innerHTML = template
+}
 
-  // }
+export class SubraggitsController {
+  constructor() {
+    _drawSubraggit()
+    ProxyState.on('subraggits', _drawSubraggit)
+  }
 
   async createSubraggit() {
     // eslint-disable-next-line no-undef

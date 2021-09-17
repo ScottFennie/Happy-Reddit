@@ -5,7 +5,7 @@ export class Subraggit {
     this.description = data.description
     this.rules = data.rules
     this.creatorId = data.creatorId
-    this.img = data.img
+    this.img = data.img || 'https://c.tenor.com/zAL59Q3m-gUAAAAC/flaming-elmo-flaming-elmo-meme.gif'
   }
 
   get Template() {
