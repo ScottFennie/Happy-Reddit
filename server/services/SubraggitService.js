@@ -1,4 +1,5 @@
 import { dbContext } from '../db/DbContext'
+import { Forbidden } from '../utils/Errors'
 import { logger } from '../utils/Logger'
 
 class SubraggitService {
@@ -14,9 +15,18 @@ class SubraggitService {
 
   async createSubraggit(subraggitData) {
     const subraggit = await dbContext.Subraggits.create(subraggitData)
-    // await subraggit.populate()
+    await subraggit.populate('creator').execPopulate()
     // logger.log(subraggit.populate())
     return subraggit
+  }
+
+  async removeSubraggit(subraggitId, userId) {
+    const foundSubraggit = await this.getSubraggitById(subraggitId)
+    if (foundSubraggit.creatorId.toString() !== userId) {
+      throw new Forbidden("This ain't ur subraggit, get lost!")
+    }
+    await foundSubraggit.remove()
+    return foundSubraggit
   }
 }
 

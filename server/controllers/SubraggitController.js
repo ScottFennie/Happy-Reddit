@@ -10,12 +10,13 @@ export class SubraggitController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id', this.getSubraggitById)
       .post('', this.createSubraggits)
+      .delete('/:id', this.removeSubraggit)
   }
 
   async getSubraggits(req, res, next) {
     try {
       const subraggits = await subraggitService.getSubraggits(req.query)
-      return res.send(subraggits)
+      res.send(subraggits)
     } catch (error) {
       next(error)
     }
@@ -35,6 +36,15 @@ export class SubraggitController extends BaseController {
     try {
       const subraggit = await subraggitService.getSubraggitById(req.params.id)
       res.send(subraggit)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async removeSubraggit(req, res, next) {
+    try {
+      const removedSubraggit = await subraggitService.removeSubraggit(req.params.id, req.userInfo.id)
+      res.send(removedSubraggit)
     } catch (error) {
       next(error)
     }
