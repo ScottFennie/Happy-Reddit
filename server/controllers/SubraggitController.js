@@ -8,13 +8,22 @@ export class SubraggitController extends BaseController {
     this.router
       .get('', this.getSubraggits)
       .use(Auth0Provider.getAuthorizedUserInfo)
-    // .post('', this.createSubraggits)
+      .post('', this.createSubraggits)
   }
 
   async getSubraggits(req, res, next) {
     try {
       const subraggits = await subraggitService.getSubraggits(req.query)
       return res.send(subraggits)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async createSubraggits(req, res, next) {
+    try {
+      const subraggit = await subraggitService.createSubraggit(req.body)
+      res.send(subraggit)
     } catch (error) {
       next(error)
     }
