@@ -8,6 +8,11 @@ class SubraggitService {
     return subraggit
   }
 
+  async getSubraggitPosts(SubId) {
+    const foundPosts = await dbContext.Posts.find(p => p.subraggitId.toString() === SubId)
+    return foundPosts
+  }
+
   async getSubraggits(query) {
     const subraggits = await dbContext.Subraggits.find(query)
     return subraggits
