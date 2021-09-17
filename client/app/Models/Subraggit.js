@@ -36,6 +36,8 @@ export class Subraggit {
           <button type="reset" class="btn btn-danger">clear</button>
         </div>
       </form>
+      <div id='${this.subraggitId}'>
+      </div>
           <button class="btn btn-danger" onclick="app.subraggitsController.deleteSubraggit('${this.subraggitId}')">Delete</button>
         </div>
       </div>
