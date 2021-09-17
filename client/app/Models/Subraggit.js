@@ -21,15 +21,15 @@ export class Subraggit {
           <form class="" id="post-form" onsubmit="app.postsController.createPost('${this.subraggitId}')">
         <div class="form-group">
           <label for="title"></label>
-          <input type="text" class="form-group" name="title" id="post-title">
+          <input type="text" class="form-group" name="title" id="post-title" placeholder="title">
         </div>
         <div class="form-group">
           <label for="description"></label>
-          <input type="text" class="form-group" name="content" id="post-content">
+          <input type="text" class="form-group" name="content" id="post-content" placeholder="content">
         </div>
         <div class="form-group">
           <label for="img"></label>
-          <input type="url" class="form-group" name="img" id="post-img">
+          <input type="url" class="form-group" name="img" id="post-img" placeholder="img url">
         </div>
         <div class="button-group my-3">
           <button type="submit" class="btn btn-primary">submit</button>
