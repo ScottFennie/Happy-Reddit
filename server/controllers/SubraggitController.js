@@ -17,7 +17,7 @@ export class SubraggitController extends BaseController {
 
   async getSubraggitPosts(req, res, next) {
     try {
-      const subraggitPosts = await postService.getPostById(req.params.id)
+      const subraggitPosts = await subraggitService.getSubraggitPosts(req.params.id)
       res.send(subraggitPosts)
     } catch (error) {
       next(error)

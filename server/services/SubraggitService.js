@@ -9,7 +9,7 @@ class SubraggitService {
   }
 
   async getSubraggitPosts(SubId) {
-    const foundPosts = await dbContext.Posts.find(p => p.subraggitId.toString() === SubId)
+    const foundPosts = await dbContext.Posts.find({ subraggitId: SubId })
     return foundPosts
   }
 
