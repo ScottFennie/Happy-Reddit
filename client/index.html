@@ -55,15 +55,19 @@
       <form class="" id="subraggit-form" onsubmit="app.subraggitController.createSubraggit()">
         <div class="form-group">
           <label for="title"></label>
-          <input type="text" name="title" id="subraggit-title">
+          <input type="text" class="form-group" name="title" id="subraggit-title">
         </div>
         <div class="form-group">
-          <label for="title"></label>
-          <input type="text" name="title" id="subraggit-title">
+          <label for="description"></label>
+          <input type="text" class="form-group" name="description" id="subraggit-description">
         </div>
         <div class="form-group">
-          <label for="title"></label>
-          <input type="text" name="title" id="subraggit-title">
+          <label for="img"></label>
+          <input type="url" class="form-group" name="img" id="subraggit-img">
+        </div>
+        <div class="button-group my-3">
+          <button type="submit" class="btn btn-primary">submit</button>
+          <button type="reset" class="btn btn-danger">clear</button>
         </div>
       </form>
 
