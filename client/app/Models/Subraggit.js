@@ -10,7 +10,7 @@ export class Subraggit {
 
   get Template() {
     return /* html */`
-        <div class="col-md-6 my-3 Subraggit">
+        <div class="col-md-4 my-3 Subraggit">
       <div class="card">
         <img src="${this.img}" alt="Subraggit-image" class="rounded">
         <div class="card-body">
