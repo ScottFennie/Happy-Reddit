@@ -11,6 +11,7 @@ function _drawSubraggit() {
 export class SubraggitsController {
   constructor() {
     _drawSubraggit()
+    this.getSubraggits()
     ProxyState.on('subraggits', _drawSubraggit)
   }
 
@@ -37,8 +38,17 @@ export class SubraggitsController {
   async deleteSubraggit(subraggitId) {
     try {
       await subraggitsService.deleteSubraggit(subraggitId)
+      logger.log(subraggitId, 'from deleteSubraggit from controller')
     } catch (error) {
       logger.log(error, 'from deleteSubraggit from controller')
+    }
+  }
+
+  async getSubraggits() {
+    try {
+      subraggitsService.getSubraggits()
+    } catch (error) {
+      logger.log('☢ getSubraggits', error)
     }
   }
 }

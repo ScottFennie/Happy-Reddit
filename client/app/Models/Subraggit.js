@@ -1,23 +1,41 @@
 export class Subraggit {
   constructor(data) {
-    this.subraggitId = data.subraggitId
+    this.subraggitId = data.id
     this.title = data.title
     this.description = data.description
     this.rules = data.rules
     this.creatorId = data.creatorId
-    this.img = data.img || 'https://c.tenor.com/zAL59Q3m-gUAAAAC/flaming-elmo-flaming-elmo-meme.gif'
+    this.img = data.img
   }
 
   get Template() {
     return /* html */`
         <div class="col-md-4 my-3 Subraggit">
       <div class="card">
-        <img src="${this.img}" alt="Subraggit-image" class="rounded">
+        <img src="${this.img}" class="rounded">
         <div class="card-body">
           <h5 class="d-flex justify-content-between">
             <span >${this.title}</span>
           </h5>
           <p>${this.description}</p>
+          <form class="" id="post-form" onsubmit="app.postsController.createPost('${this.subraggitId}')">
+        <div class="form-group">
+          <label for="title"></label>
+          <input type="text" class="form-group" name="title" id="post-title">
+        </div>
+        <div class="form-group">
+          <label for="description"></label>
+          <input type="text" class="form-group" name="content" id="post-content">
+        </div>
+        <div class="form-group">
+          <label for="img"></label>
+          <input type="url" class="form-group" name="img" id="post-img">
+        </div>
+        <div class="button-group my-3">
+          <button type="submit" class="btn btn-primary">submit</button>
+          <button type="reset" class="btn btn-danger">clear</button>
+        </div>
+      </form>
           <button class="btn btn-danger" onclick="app.subraggitsController.deleteSubraggit('${this.subraggitId}')">Delete</button>
         </div>
       </div>
