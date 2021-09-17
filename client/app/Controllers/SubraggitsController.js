@@ -16,12 +16,6 @@ export class SubraggitsController {
     // eslint-disable-next-line no-undef
     const form = event.target
     const subraggitData = {
-    //   this.subraggitId = data.subraggitId
-    // this.title = data.title
-    // this.description = data.description
-    // this.rules = data.rules
-    // this.creatorId = data.creatorId
-    // this.img = data.img
       title: form.title.value,
       description: form.description.value,
       img: form.img.value
