@@ -5,7 +5,6 @@ import { logger } from '../Utils/Logger.js'
 
 class SubraggitsService {
   async createSubraggit(subraggitData) {
-    debugger
     const res = await api.post('api/subraggits', subraggitData)
     logger.log('subraggit service res', res)
     ProxyState.subraggits = [...ProxyState.subraggits, new Subraggit(res.data)]
