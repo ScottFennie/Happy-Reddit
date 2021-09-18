@@ -3,9 +3,9 @@ import { logger } from '../Utils/Logger.js'
 import { subraggitsService } from '../Services/SubraggitService.js'
 
 function _drawSubraggit() {
-  let template = ''
-  ProxyState.subraggits.forEach(s => { template += s.Template })
-  document.getElementById('subraggit').innerHTML = template
+  // let template = ''
+  // ProxyState.subraggits.forEach(s => { template += s.Template })
+  // document.getElementById('subraggit').innerHTML = template
 
   let temp2 = ''
   ProxyState.subraggits.forEach(r => { temp2 += r.Template2 })
@@ -37,6 +37,27 @@ export class SubraggitsController {
     } catch (error) {
       logger.log(error)
     }
+  }
+
+  async drawPosts2(Sub) {
+  // const foundPosts = ProxyState.posts.filter(p => p.subraggitId === subraggitId)
+  // foundPosts.forEach(p => { template += p.Template })
+  // document.getElementById(`${subraggitId}`).innerHTML = template
+    ProxyState.subraggits.forEach(sub => {
+      let template = ''
+      const posts = ProxyState.posts.filter(p => p.subraggitId === Sub)
+      posts.forEach(post => {
+        template += post.Template
+      })
+      document.getElementById(`${Sub}`).innerHTML = template
+    })
+  }
+
+  async drawOneSubraggit(subId) {
+    const current = ProxyState.subraggits.find(s => s.subraggitId === subId)
+    document.getElementById('subraggit').innerHTML = current.Template
+
+    this.drawPosts2(subId)
   }
 
   async deleteSubraggit(subraggitId) {

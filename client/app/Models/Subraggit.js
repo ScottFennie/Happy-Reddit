@@ -47,9 +47,9 @@ export class Subraggit {
 
   get Template2() {
     return /* html */`
-        <li class="list-group-item nav-link selectable" onclick="app.subraggitsController._drawSubraggit()">
+        <li class="list-group-item nav-link selectable" onclick="app.subraggitsController.drawOneSubraggit('${this.subraggitId}')">
               ${this.title}
-            </li>
+        </li>
     `
   }
 }

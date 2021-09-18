@@ -15,6 +15,12 @@ class PostsService {
     ProxyState.posts = res.data.map(p => new Post(p))
     logger.log('posts', res.data)
   }
+
+  async drawPosts2(subId) {
+    const posts = ProxyState.posts.filter(p => p.subraggitId === subId)
+
+    return posts
+  }
 }
 
 export const postsService = new PostsService()

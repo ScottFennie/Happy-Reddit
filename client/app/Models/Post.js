@@ -12,11 +12,14 @@ export class Post {
   get Template() {
     return /* html */`
     <div class="row my-2">
+    <img src="${this.img}" class="rounded">
+    <div class="text-center">
       <h2>
         ${this.title}
       </h2>
-      <div>
+      <div class="py-4">
         ${this.content}
+      </div>
       </div>
     </div>
     `
