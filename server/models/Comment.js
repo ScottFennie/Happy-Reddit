@@ -1,16 +1,14 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-export const PostSchema = new Schema({
-  subraggitId: { type: mongoose.Schema.Types.ObjectId, required: true },
-  title: { type: String, required: true },
+export const CommentSchema = new Schema({
+  postId: { type: mongoose.Schema.Types.ObjectId, required: true },
   content: { type: String, required: true, maxlength: 300 },
-  img: { type: String, required: true },
   creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' }
 
 })
 
-PostSchema.virtual('creator', {
+CommentSchema.virtual('creator', {
   localField: 'creatorId',
   foreignField: '_id',
   justOne: true,

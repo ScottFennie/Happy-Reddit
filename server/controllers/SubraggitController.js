@@ -1,5 +1,4 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { postService } from '../services/PostsService'
 import { subraggitService } from '../services/SubraggitService'
 import BaseController from '../utils/BaseController'
 
