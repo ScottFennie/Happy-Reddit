@@ -1,4 +1,5 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { commentService } from '../services/CommentService'
 import { subraggitService } from '../services/SubraggitService'
 import BaseController from '../utils/BaseController'
 
@@ -9,33 +10,23 @@ export class CommentController extends BaseController {
       .get('', this.getComments)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id', this.getCommentById)
-      .post('', this.createComments)
+      .post('', this.addComment)
       .delete('/:id', this.removeComment)
-      .get('/:id/posts/:id/comments', this.getPostComments)
-  }
-
-  async getPostComments(req, res, next) {
-    try {
-      const subraggitPosts = await subraggitService.getSubraggitPosts(req.params.id)
-      res.send(subraggitPosts)
-    } catch (error) {
-      next(error)
-    }
   }
 
   async getComments(req, res, next) {
     try {
-      const comments = await subraggitService.getComments(req.query)
+      const comments = await commentService.getComments(req.query)
       res.send(comments)
     } catch (error) {
       next(error)
     }
   }
 
-  async createComments(req, res, next) {
+  async addComment(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const comment = await subraggitService.createComment(req.body)
+      const comment = await commentService.addComment(req.body)
       res.send(comment)
     } catch (error) {
       next(error)
@@ -44,7 +35,7 @@ export class CommentController extends BaseController {
 
   async getCommentById(req, res, next) {
     try {
-      const comment = await subraggitService.getSubraggitById(req.params.id)
+      const comment = await commentService.getCommentById(req.params.id)
       res.send(comment)
     } catch (error) {
       next(error)
@@ -53,7 +44,7 @@ export class CommentController extends BaseController {
 
   async removeComment(req, res, next) {
     try {
-      const removedComment = await subraggitService.removedComment(req.params.id, req.userInfo.id)
+      const removedComment = await commentService.removedComment(req.params.id, req.userInfo.id)
       res.send(removedComment)
     } catch (error) {
       next(error)

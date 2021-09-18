@@ -7,6 +7,11 @@ class PostsService {
     return post
   }
 
+  async getPostComments(postId) {
+    const foundPosts = await dbContext.Posts.find({ postId: postId })
+    return foundPosts
+  }
+
   async addPost(postData) {
     const post = await dbContext.Posts.create(postData)
     await post.populate('creator').execPopulate()
@@ -24,8 +29,8 @@ class PostsService {
   }
 
   async getPosts(query) {
-    const subraggits = await dbContext.Subraggits.find(query)
-    return subraggits
+    const posts = await dbContext.Posts.find(query)
+    return posts
   }
 }
 export const postService = new PostsService()

@@ -11,12 +11,22 @@ export class PostController extends BaseController {
       .get('/:id', this.getPostById)
       .post('', this.addPost)
       .delete('/:id', this.removePost)
+      .get('/:id/comments', this.getPostComments)
   }
 
   async removePost(req, res, next) {
     try {
       const removedPost = await postService.deletePost(req.params.id, req.userInfo.id)
       res.send(removedPost)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getPostComments(req, res, next) {
+    try {
+      const postComments = await postService.getPostComments(req.params.id)
+      res.send(postComments)
     } catch (error) {
       next(error)
     }
