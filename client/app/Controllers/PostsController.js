@@ -2,16 +2,25 @@ import { ProxyState } from '../AppState.js'
 import { postsService } from '../Services/PostsService.js'
 import { logger } from '../Utils/Logger.js'
 
-function _drawPosts(subraggitId) {
-  let template = ''
-  const foundPosts = ProxyState.posts.filter(p => p.subraggitId === subraggitId)
-  foundPosts.forEach(p => { template += p.Template })
-  document.getElementById(`${subraggitId}`).innerHTML = template
+function _drawPosts() {
+  // const foundPosts = ProxyState.posts.filter(p => p.subraggitId === subraggitId)
+  // foundPosts.forEach(p => { template += p.Template })
+  // document.getElementById(`${subraggitId}`).innerHTML = template
+  ProxyState.subraggits.forEach(sub => {
+    let template = ''
+    const posts = ProxyState.posts.filter(p => p.subraggitId === sub.subraggitId)
+    posts.forEach(post => {
+      template += post.Template
+    })
+    document.getElementById(`${sub.subraggitId}`).innerHTML = template
+  })
 }
 
 export class PostsController {
   constructor() {
     logger.log('shut up')
+    this.getPosts()
+    ProxyState.on('posts', _drawPosts)
   }
 
   async createPost(id) {
@@ -35,5 +44,17 @@ export class PostsController {
     } catch (error) {
       logger.log('createPost', error)
     }
+  }
+
+  async getPosts() {
+    try {
+      postsService.getPosts()
+    } catch (error) {
+      logger.log('getPosts controller', error)
+    }
+  }
+
+  async getPostsById() {
+
   }
 }

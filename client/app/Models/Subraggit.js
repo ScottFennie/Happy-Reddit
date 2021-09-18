@@ -10,7 +10,7 @@ export class Subraggit {
 
   get Template() {
     return /* html */`
-        <div class="col-md-4 my-3 Subraggit">
+        <div class="subraggit">
       <div class="card">
         <img src="${this.img}" class="rounded">
         <div class="card-body">
@@ -36,7 +36,7 @@ export class Subraggit {
           <button type="reset" class="btn btn-danger">clear</button>
         </div>
       </form>
-      <div id='${this.subraggitId}'>
+      <div class="container" id='${this.subraggitId}'>
       </div>
           <button class="btn btn-danger" onclick="app.subraggitsController.deleteSubraggit('${this.subraggitId}')">Delete</button>
         </div>

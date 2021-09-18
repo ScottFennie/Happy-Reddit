@@ -9,6 +9,12 @@ class PostsService {
     ProxyState.posts = [...ProxyState.posts, new Post(res.data)]
     logger.log('createPost Service', ProxyState.posts)
   }
+
+  async getPosts() {
+    const res = await api.get('api/posts')
+    ProxyState.posts = res.data.map(p => new Post(p))
+    logger.log('posts', res.data)
+  }
 }
 
 export const postsService = new PostsService()

@@ -11,11 +11,13 @@ export class Post {
 
   get Template() {
     return /* html */`
-    <div>
-      ${this.title}
-    </div>
-    <div>
-      ${this.content}
+    <div class="row my-2">
+      <h2>
+        ${this.title}
+      </h2>
+      <div>
+        ${this.content}
+      </div>
     </div>
     `
   }
