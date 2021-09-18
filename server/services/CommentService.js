@@ -14,7 +14,7 @@ class CommentService {
     return comment
   }
 
-  async deleteComment(commentId, userId) {
+  async removeComment(commentId, userId) {
     const foundcomment = await this.getCommentById(commentId)
     if (foundcomment.creatorId.toString() !== userId) {
       throw new Forbidden("This ain't ur post, get lost!")
