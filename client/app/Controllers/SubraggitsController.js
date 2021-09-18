@@ -6,6 +6,10 @@ function _drawSubraggit() {
   let template = ''
   ProxyState.subraggits.forEach(s => { template += s.Template })
   document.getElementById('subraggit').innerHTML = template
+
+  let temp2 = ''
+  ProxyState.subraggits.forEach(r => { temp2 += r.Template2 })
+  document.getElementById('subraggits').innerHTML = temp2
 }
 
 export class SubraggitsController {

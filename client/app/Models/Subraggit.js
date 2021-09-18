@@ -44,6 +44,14 @@ export class Subraggit {
     </div>
     `
   }
+
+  get Template2() {
+    return /* html */`
+        <li class="list-group-item nav-link selectable" onclick="app.subraggitsController._drawSubraggit()">
+              ${this.title}
+            </li>
+    `
+  }
 }
 
 // <button class="btn btn-danger" onclick="app.commentsController.addComment('${this.id}')">Delete</button>
